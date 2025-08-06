@@ -1,35 +1,47 @@
-This is a re-release of the final version of the 4th Edition of Plan 9
-from Bell Labs distributed directly by Bell Labs.
+# Plan 9 from Bell Labs - 4th Edition Source Tree
 
-4th Edition was originally released by Lucent Technologies in 2002. It
-was released under the terms the Lucent Public License Version 1.02.
-4th Edition continues the development of the same ideas, but in many
-ways represents the base of what most people think of as "modern" Plan
-9 today. The ubiquitous file protocol, 9P, got its first revision, to
-9P2000, which caused changes to many parts of the system. It also saw
-the debut of venti(8) and fossil(4), which began replacing the
-venerable old file server, fs(4). Authentication largely moved to a
-separate agent, factotum(4). Updates moved to replica, and the wiki
-was created. The original release notes for this edition can be found
-at /sys/doc/release4.ms.
+This repository contains the final public release of **Plan 9 from Bell Labs**. It
+was originally distributed by Bell Labs and is now provided by the Plan 9
+Foundation under open source licenses. The distribution preserves the operating
+system as it existed in the early 2000s and is mainly of historical and
+research interest.
 
-While this release is a recognizable ancestor of the latest Plan 9
-available, it is still quite old, and this release is mostly for
-educational and research purposes. The file protocol and
-authentication mechanisms are continued in modern Plan 9, though, so
-researchers looking to run this should have an easier time than with
-all previous releases. This is a second release of the 4th Edition,
-marking the final state of Plan 9 as distributed directly by Bell
-Labs.
+The original release notes for this edition can be found in
+`/sys/doc/release4.ms`.
 
-The only changes between this release and the original 4th Edition
-release are the new NOTICE, LICENSE, and README files, and moving the
-old ones. In particular, any copyright notices attributing things to
-Lucent Technologies or Bell Labs, or notices on restrictions of their
-use, should be read as historical; all such rights have been
-transferred to the Plan 9 Foundation and released as open source.
-Parts (notably, the fonts) maintain trademark and copyright to their
-respective parties (such as Bigelow & Holmes Inc.) and were included
-in Plan 9 by permission; those copyrights are unaffected by the
-transfer to Plan 9 Foundation and remain in effect per the terms found
-in this distribution.
+## Directory Overview
+
+- **386**, **amd64**, **arm**, **mips**, **power**, **power64**, **sparc** –
+  Architecture-specific kernels, libraries and binaries.
+- **acme** – Source for the `acme` editor and its related tools.
+- **adm** – System administration utilities and scripts.
+- **cfg** – Example configuration files.
+- **cron** – Files for the `cron` scheduler service.
+- **dist** – Scripts and files used to build distribution images.
+- **lib** – Shared data such as fonts, dictionaries and other resources.
+- **mail** – The `upas` mail system.
+- **rc** – Scripts for the Plan 9 `rc` shell and boot environment.
+- **sys** – System documentation, manual pages and the bulk of source code
+  including the kernel and userland commands.
+- **usr/glenda** – Example user environment with introductory notes.
+
+## Building
+
+Compiling the entire operating system requires a running Plan 9 environment with
+its `mk` build tool. On Unix-like hosts one commonly builds the **drawterm**
+client, which allows connecting to a Plan 9 CPU server. To build drawterm:
+
+```bash
+cd sys/src/cmd/unix/drawterm
+make CONF=unix
+```
+
+This requires standard development tools and X11 headers.
+
+## Licensing
+
+Plan 9 is released under the Lucent Public License 1.02 along with a collection
+of other licenses for specific components (see the `LICENSE*` files and
+`NOTICE`). Some assets such as fonts retain copyright to their respective
+owners and were included by permission.
+
