@@ -34,7 +34,7 @@ main(int argc, char **argv)
 	}
 	mapinit(argv[0], 0);
 	in = Bopen("/fd/0", OREAD);
-	while(l = Brdline(in, '\n')){	/* assign = */
+	while((l = Brdline(in, '\n')) != nil){	/* assign = */
 		l[Blinelen(in)-1] = 0;
 		arc = strparse(l, nelem(arv), arv);
 		if(arc <= 0)
